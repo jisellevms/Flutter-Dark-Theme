@@ -14,12 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: Text("Contador")),
       body: Center(
-          child: Switch(
-        value: AppController.instance.isDartTheme,
-        onChanged: (value) {
-           AppController.instance.changeTheme();
-        },
-      )),
+          child: CustomSwitch()),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
@@ -29,5 +24,17 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
       ),
     );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+        value: AppController.instance.isDartTheme,
+        onChanged: (value) {
+           AppController.instance.changeTheme();
+        },
+      );
   }
 }
